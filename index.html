@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Home</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+  <div id="app" class="min-h-screen flex flex-col items-center justify-center">
+    <!-- Header Section -->
+    <header class="w-full bg-blue-600 text-white p-4 text-center shadow-md">
+      <h1 class="text-3xl font-bold">Welcome to My Home Page</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
+      <!-- Introduction Section -->
+      <section class="mb-8 text-center">
+        <h2 class="text-2xl font-semibold mb-4">Share Your Story</h2>
+        <p class="text-lg">Write a story about yourself. Make sure it's at least 3 characters long!</p>
+      </section>
+
+      <!-- Story Form Section -->
+      <section class="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
+        <form @submit.prevent="submitStory">
+          <div class="mb-4">
+            <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+            <input type="text" id="name" v-model="name" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="Enter your name" required />
+          </div>
+
+          <div class="mb-4">
+            <label for="story" class="block text-sm font-medium text-gray-700">Your Story</label>
+            <textarea id="story" v-model="story" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="Write your story" required></textarea>
+          </div>
+
+          <!-- Error Message for Validation -->
+          <p v-if="errorMessage" class="text-red-500 mb-4">{{ errorMessage }}</p>
+
+          <button type="submit" class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition">Submit</button>
+        </form>
+      </section>
+
+      <!-- Story Display Section -->
+      <section v-if="submitted" class="mt-8 bg-white p-6 rounded-lg shadow-md max-w-md mx-auto text-center">
+        <h3 class="text-xl font-bold mb-4">Your Submitted Story</h3>
+        <p class="text-gray-700"><strong>{{ name }}:</strong> {{ story }}</p>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="w-full bg-gray-800 text-white text-center p-4 mt-auto">
+      <p>&copy; 2024 My Home Page</p>
+    </footer>
+  </div>
+
+  <!-- <script src="app.js"></script> -->
+</body>
+
+</html>
